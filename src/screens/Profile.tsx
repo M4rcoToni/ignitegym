@@ -1,10 +1,22 @@
-import { Center, Text } from 'native-base';
+import { ScreenHeader } from '@components/ScreenHeader';
+import { UserPhoto } from '@components/UsePhoto';
+import { Center, ScrollView, Text, VStack } from 'native-base';
 
 
 export function Profile() {
   return (
-    <Center flex={1}>
-      <Text color='white'>Profile</Text>
-    </Center>
+    <VStack flex={1}>
+      <ScreenHeader title='Perfil' />
+      <ScrollView>
+        <Center>
+          <UserPhoto
+            source={{ uri: 'https://github.com/m4rcotoni.png' }}
+            alt='Foto do usuário'
+            size={33}
+          />
+        </Center>
+
+      </ScrollView>
+    </VStack>
   );
 }
