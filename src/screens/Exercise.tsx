@@ -56,15 +56,16 @@ export function Exercise() {
         />
         <Box bg='gray.600' rounded='md' pb={4} px={4}>
           <HStack alignItems='center' justifyContent='space-around' mb={6} mt={5}>
-            <HStack>
+            <HStack >
               <SeriesSvg />
-              <Text color='gray.200' ml={2} textTransform='capitalize'>
+              <Text color='gray.200' ml={2} textTransform='capitalize' alignSelf='center'>
                 3 series
               </Text>
             </HStack>
+
             <HStack>
               <RepetitionsSvg />
-              <Text color='gray.200' ml={2} textTransform='capitalize'>
+              <Text color='gray.200' ml={2} textTransform='capitalize' alignSelf='center'>
                 12 repetições
               </Text>
             </HStack>
