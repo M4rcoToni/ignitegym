@@ -1,4 +1,4 @@
-import { Center, HStack, Heading, Icon, Text, VStack, Image, Box } from 'native-base';
+import { Center, HStack, Heading, Icon, Text, VStack, Image, Box, ScrollView } from 'native-base';
 import { TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -43,36 +43,37 @@ export function Exercise() {
 
         </HStack>
       </VStack>
+      <ScrollView>
+        <VStack p={8}>
+          <Image
+            w='full'
+            h={80}
+            source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp4TBoWRvxfOgRUz4FfnrUXxeNmYXLS5_lXbt2n4vmnQu59Tc8BnFpU_3wIsb7vJXCU0c&usqp=CAU' }}
+            alt='Nome do exercício'
+            mb={3}
+            resizeMode='cover'
+            rounded='lg'
+          />
+          <Box bg='gray.600' rounded='md' pb={4} px={4}>
+            <HStack alignItems='center' justifyContent='space-around' mb={6} mt={5}>
+              <HStack >
+                <SeriesSvg />
+                <Text color='gray.200' ml={2} textTransform='capitalize' alignSelf='center'>
+                  3 series
+                </Text>
+              </HStack>
 
-      <VStack p={8}>
-        <Image
-          w='full'
-          h={80}
-          source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp4TBoWRvxfOgRUz4FfnrUXxeNmYXLS5_lXbt2n4vmnQu59Tc8BnFpU_3wIsb7vJXCU0c&usqp=CAU' }}
-          alt='Nome do exercício'
-          mb={3}
-          resizeMode='cover'
-          rounded='lg'
-        />
-        <Box bg='gray.600' rounded='md' pb={4} px={4}>
-          <HStack alignItems='center' justifyContent='space-around' mb={6} mt={5}>
-            <HStack >
-              <SeriesSvg />
-              <Text color='gray.200' ml={2} textTransform='capitalize' alignSelf='center'>
-                3 series
-              </Text>
+              <HStack>
+                <RepetitionsSvg />
+                <Text color='gray.200' ml={2} textTransform='capitalize' alignSelf='center'>
+                  12 repetições
+                </Text>
+              </HStack>
             </HStack>
-
-            <HStack>
-              <RepetitionsSvg />
-              <Text color='gray.200' ml={2} textTransform='capitalize' alignSelf='center'>
-                12 repetições
-              </Text>
-            </HStack>
-          </HStack>
-          <Button title='Marcar como realizado' />
-        </Box>
-      </VStack>
+            <Button title='Marcar como realizado' />
+          </Box>
+        </VStack>
+      </ScrollView>
     </VStack>
   );
 }
