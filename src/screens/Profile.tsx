@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
-
+import * as ImagePicker from 'expo-image-picker';
 import { Center, ScrollView, Text, VStack, Skeleton, Heading } from 'native-base';
 import { Button } from '@components/Button';
 import { Input } from '@components/Input';
@@ -11,6 +11,21 @@ const PHOTO_SIZE = 33;
 
 export function Profile() {
   const [photoIsLoading, setPhotoIsLoading] = useState(false);
+  const [userPhoto, setUserPhoto] = useState('https://github.com/m4rcotoni.png');
+  async function handlePickPhoto() {
+    const photoSelected = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      quality: 1,
+      aspect: [4, 4],
+      allowsEditing: true,
+    });
+    console.log(photoSelected);
+
+    if (photoSelected.canceled) {
+      return;
+    }
+    setUserPhoto(photoSelected.assets[0].uri)
+  }
   return (
     <VStack flex={1}>
       <ScreenHeader title='Perfil' />
@@ -27,12 +42,14 @@ export function Profile() {
               />
               :
               <UserPhoto
-                source={{ uri: 'https://github.com/m4rcotoni.png' }}
+                source={{ uri: userPhoto }}
                 alt='Foto do usuário'
                 size={PHOTO_SIZE}
               />
           }
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={handlePickPhoto}
+          >
             <Text
               color='green.500'
               fontWeight='bold'
